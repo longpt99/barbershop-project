@@ -9,8 +9,7 @@
     "express": "^4.17.1",
     "mailgun-js": "^0.22.0",
     "mongoose": "^5.9.15",
-    "pug": "^2.0.4",
-    "shortid": "^2.2.15"
+    "pug": "^2.0.4"
   },
   "devDependencies": {
     "eslint": "^7.0.0",
