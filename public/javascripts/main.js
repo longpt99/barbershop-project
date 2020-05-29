@@ -14,7 +14,7 @@ Please choose the current day`);
 
 document.addEventListener('DOMContentLoaded', async () => {
   let events = null;
-  await axios.get('http://localhost:8080/calendar/data').then((res) => {
+  await axios.get('/calendar/data').then((res) => {
     events = res.data;
   });
   const date = new Date();
@@ -162,7 +162,7 @@ Status: ${isDone}`);
       };
 
       axios
-        .post('http://localhost:8080/calendar/data', event)
+        .post('/calendar/data', event)
         .then((res) => console.log(res.data))
         .catch((err) => console.log(err.message));
 
