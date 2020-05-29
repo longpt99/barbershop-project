@@ -1,0 +1,24 @@
+extends ../layout/common
+block content
+  .d-flex.align-items-center
+    h1.mr-3=`Hi ${userInfo.name}!`
+
+  form(action=`/profile/${userInfo.id}` method="POST")
+    .form-group
+        label(for='name') Name:
+        input#name.form-control(type='text' name='name' value=userInfo.name) 
+    .form-group
+      label(for='phone') Phone:
+      input#phone.form-control(type='text' name='phone' value=userInfo.phone)
+    .form-group
+      label(for='email') Email:
+      input#email.form-control(type='email' name='email' value=userInfo.email disabled)
+    .form-group
+      label(for='gender') Gender:
+      select.custom-select(name='gender' id='gender')
+        option.gen(value='male') Male
+        option.gen(value='female') Female
+        option.gen(value='others') Others
+    button.mt-3.btn.btn-primary(type='submit' name='id' value=userInfo.id) Update
+    a.mt-3.btn.btn-outline-secondary(href='/') Back
+  script(src="/javascripts/profile.js")

@@ -1,0 +1,21 @@
+extends ../layout/common
+block content
+  h1 Customer List
+  table.table.text-center
+    thead
+      tr
+        th(scope="col") #
+        th(scope="col") Name
+        th(scope="col") Phone
+        th(scope="col") View
+        th(scope="col") Delete
+    tbody
+      each user, index in users
+        tr
+          th(scope="row")=index+1
+          td=user.name
+          td=`(+84) ${user.phone}`
+          td
+            a.btn.btn-outline-info(href=`/profile/${user.id}`) View
+          td
+            a.btn.btn-outline-danger(href=`/admin/${user.id}`) Delete

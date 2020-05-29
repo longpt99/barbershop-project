@@ -2,11 +2,13 @@ html
   head
     link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css")
     link(rel="shortcut icon" type="image/jpg" href="https://school.coders-x.com/favicon.png")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js")
 
     link(href='assets/fullcalendar-4.4.0/packages/core/main.css' rel='stylesheet')
     link(href='assets/fullcalendar-4.4.0/packages/daygrid/main.css' rel='stylesheet')
     link(href='assets/fullcalendar-4.4.0/packages/list/main.css' rel='stylesheet')
     link(href='assets/fullcalendar-4.4.0/packages/timegrid/main.css' rel='stylesheet')
+    link(href='assets/fullcalendar-4.4.0/packages/bootstrap/main.css' rel='stylesheet')
     link(rel="stylesheet", href="styles/App.css")
 
     script(src='assets/fullcalendar-4.4.0/packages/core/main.js')
@@ -14,6 +16,7 @@ html
     script(src='assets/fullcalendar-4.4.0/packages/list/main.js')
     script(src='assets/fullcalendar-4.4.0/packages/timegrid/main.js')
     script(src='assets/fullcalendar-4.4.0/packages/interaction/main.js')
+    script(src='assets/fullcalendar-4.4.0/packages/bootstrap/main.js')
 
   body
     nav.navbar.navbar-expand-lg.navbar-light.bg-light
@@ -21,13 +24,19 @@ html
       ul.navbar-nav
         li.nav-item
           a.nav-link(href='/calendar') Calendar
+        if isAdmin
+          li.nav-item
+            a.nav-link(href='/admin') Users
       ul.navbar-nav.ml-auto
-        li.nav-item
-          a.nav-link(href='/auth/login') Log in
-        li.nav-item
-          a.nav-link(href='/auth/register') Register
-        li.nav-item
-          a.nav-link(href='/auth/logout') Log out
-      
-  .container       
+        if !user
+          li.nav-item
+            a.nav-link(href='/login') Log in
+          li.nav-item
+            a.nav-link(href='/register') Register
+        else
+          li.nav-item
+            a.nav-link(href=`/profile/${user.id}`)=user.name
+          li.nav-item
+            a.nav-link(href='/logout') Log out
+  .container.mt-5       
     block content

@@ -6,3 +6,12 @@
 
   text-align: center;
 }
+
+.fc-time-grid .fc-slats td {
+  height: 2.5em;
+}
+
+.table td,
+.table th {
+  vertical-align: middle;
+}
